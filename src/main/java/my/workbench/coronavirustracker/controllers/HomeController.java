@@ -28,10 +28,13 @@ public class HomeController {
         //using the lambda expression stat -> for getting the value that we needed from allStats and using sum method for returning the sum of the value.
         //Lambda expression is used to calculate a small mathmetical function.
 
+        int totalNewCases = allStats.stream().mapToInt(stat -> stat.getDiffFromPrevDay()).sum();//give the calculation of a total new cases from the previous day
+
         //modelObj.addAttribute("locationStatus", coronaVirusDataService.getAllStats()); //we are setting an attribute to the controller to get the values
 
         modelObj.addAttribute("locationStatus", allStats);
         modelObj.addAttribute("totalReportedCases", totalReportedCases);
+        modelObj.addAttribute("totalNewCases", totalNewCases);
         return "home";
     }
 }
