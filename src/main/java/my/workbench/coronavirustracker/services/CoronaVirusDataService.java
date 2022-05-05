@@ -50,8 +50,16 @@ public class CoronaVirusDataService {
             LocationStats locationStatus = new LocationStats();
             locationStatus.setState(record.get("Province/State")); //pulling out one column from here
             locationStatus.setCountry(record.get("Country/Region")); //pulling out another column from here
-            locationStatus.setLatestTotalCases(Integer.parseInt(record.get(record.size()-1)));// get the last column using size -1 and added typecast Integer
+            //locationStatus.setLatestTotalCases(Integer.parseInt(record.get(record.size()-1)));
+            // get the last column using size -1 and added typecast Integer
             //System.out.println(locationStatus);
+
+            int latestCases = Integer.parseInt(record.get(record.size()-1));
+            int prevDayCases = Integer.parseInt(record.get(record.size()-2));
+            locationStatus.setLatestTotalCases(latestCases);
+            locationStatus.setDiffFromPrevDay(latestCases - prevDayCases);
+
+
 
             newStats.add(locationStatus); //adding the locationStatus in a arraylist so that it will return us a list of what we want
         }

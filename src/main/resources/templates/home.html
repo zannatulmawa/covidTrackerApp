@@ -18,18 +18,22 @@
     <h1 class="display-4" th:text="${totalReportedCases}"></h1>
     <p class="lead">Total cases reported as of today</p>
 </div>
+<div class = "container">
 <table>
     <tr>
         <th>State</th> <!--These are the headlines name that we wanted to see-->
         <th>Country</th>
         <th>Latest Cases</th>
+        <th>Changes from the last Day</th>
     </tr>
     <tr th:each="locationStat : ${locationStatus}"> <!--here locationStat is an iterator who is iterating in the locationStatus Value-->
         <td th:text="${locationStat.state}"></td> <!-- here the value of the state,country and latestTotalCases is from the locationStats.java class -->
         <td th:text="${locationStat.country}"></td>
         <td th:text="${locationStat.latestTotalCases}">0</td>
+        <td th:text="${locationStat.diffFromPrevDay}">0</td>
     </tr>
 </table>
+</div>
 
 </body>
 
