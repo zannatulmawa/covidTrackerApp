@@ -38,7 +38,7 @@ public class CoronaVirusDataService {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(virusDataUrl)).build(); //creating the request
         HttpResponse <String> httpResponse = client.send(request, HttpResponse.BodyHandlers.ofString()); //sending the response
-        System.out.println(httpResponse.body());
+        //System.out.println(httpResponse.body());
 
 
         //In order to parse the csv file, we take this code from an open source library
@@ -51,7 +51,7 @@ public class CoronaVirusDataService {
             locationStatus.setState(record.get("Province/State")); //pulling out one column from here
             locationStatus.setCountry(record.get("Country/Region")); //pulling out another column from here
             locationStatus.setLatestTotalCases(Integer.parseInt(record.get(record.size()-1)));// get the last column using size -1 and added typecast Integer
-            System.out.println(locationStatus);
+            //System.out.println(locationStatus);
 
             newStats.add(locationStatus); //adding the locationStatus in a arraylist so that it will return us a list of what we want
         }
