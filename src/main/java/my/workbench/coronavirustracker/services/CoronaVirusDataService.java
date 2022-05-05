@@ -20,13 +20,15 @@ import java.util.List;
 public class CoronaVirusDataService {
     private static String virusDataUrl = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
 
-    private List<LocationStats> allStats = new ArrayList<>();
+    private List<LocationStats> allStats = new ArrayList<>(); //why we are using list for creating the arraylist object rather using arraylist?
     @PostConstruct //In order to make a post request through spring
     @Scheduled(cron = "* * * * * *") //calling spring to execute the method every second
 
     public void fetchVirusData() throws IOException, InterruptedException {
 
         List<LocationStats> newStats = new ArrayList<>(); //using this list object to avoid messiness
+        //Also list can implement some classes like ArrayList, AbstractList, stack, vector ets.
+
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(virusDataUrl)).build(); //creating the request
         HttpResponse <String> httpResponse = client.send(request, HttpResponse.BodyHandlers.ofString()); //sending the response
