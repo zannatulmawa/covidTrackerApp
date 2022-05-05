@@ -21,6 +21,12 @@ public class CoronaVirusDataService {
     private static String virusDataUrl = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
 
     private List<LocationStats> allStats = new ArrayList<>(); //why we are using list for creating the arraylist object rather using arraylist?
+
+    public List<LocationStats> getAllStats() {
+        //creating a getter method for the allStats object for getting and rendering the allStats values in a different class (homecontroller.java).
+        return allStats;
+    }
+
     @PostConstruct //In order to make a post request through spring
     @Scheduled(cron = "* * * * * *") //calling spring to execute the method every second
 
