@@ -1,8 +1,8 @@
 package my.workbench.coronavirustracker.services;
 
 import org.springframework.stereotype.Service;
-//import org.apache.commons.csv.CSVRecord;
-//import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
+import org.apache.commons.csv.CSVFormat;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
@@ -23,14 +23,14 @@ public class CoronaVirusDataService {
         HttpResponse <String> httpResponse = client.send(request, HttpResponse.BodyHandlers.ofString()); //sending the response
         System.out.println(httpResponse.body());
 
-        /*
+
         StringReader csvBodyReader = new StringReader(httpResponse.body());
-        Iterable<CSVRecord> records = CSVFormat.Default.withFirstRecordAsHeader().parse(csvBodyReader);
+        Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvBodyReader);
         for (CSVRecord record : records) {
             String state = record.get("Province/State");
             System.out.println(state);
 
-        }*/
+        }
     }
 }
 
